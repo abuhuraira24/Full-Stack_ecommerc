@@ -1,4 +1,4 @@
-import {Container,Row,Col} from "reactstrap"
+import {Container,Row} from "reactstrap"
 import { BiBed,BiChair,BiTable } from "react-icons/bi";
 const SideBar = () => {
 
