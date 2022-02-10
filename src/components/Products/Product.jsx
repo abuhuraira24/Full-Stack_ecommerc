@@ -1,4 +1,5 @@
-import {CardGroup, Card, CardImg, CardBody, CardTitle,CardSubtitle,Button} from "reactstrap"
+import { useState , useEffect} from "react";
+import {CardGroup, Card, CardImg, CardBody, CardTitle,CardSubtitle,Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import '../../assets/scss/shopping.scss'
 import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -7,6 +8,7 @@ import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 const Product = ({productData,addToCart, }) => {
     
 
+ 
     return (
         <>
         <CardGroup>
@@ -39,6 +41,17 @@ const Product = ({productData,addToCart, }) => {
                 </CardBody>
            </Card>
         </CardGroup>
+        {/* <Modal 
+          isOpen={isOpen}
+          toggle={() =>togglePopup()}
+        >
+            <ModalHeader toggle={() =>togglePopup()}>
+                header.....
+            </ModalHeader>
+            <ModalBody>
+                Body.....
+            </ModalBody>
+        </Modal> */}
         </>
     );
 }
