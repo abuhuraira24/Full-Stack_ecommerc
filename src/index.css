@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+body {
+  background: #dddddd30;
+}
+.w-100 {
+  max-width: 100%;
+}
+.bordered {
+  border-radius: 10px;
+}
+input:focus {
+  outline: none;
+  border: 1px solid #ddd !important;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.p-header {
+  padding: 1.5rem 1rem 0rem 0rem;
+}
+.theme_btn {
+  border: none;
+  color: #fff;
+}
+
+a {
+  opacity: 1 !important;
+}

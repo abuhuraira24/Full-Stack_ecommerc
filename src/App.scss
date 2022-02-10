@@ -1,0 +1,44 @@
+.color_theme {
+  color: #103178;
+}
+.bg_color {
+  background: #103178;
+}
+.bg_theme {
+  background: #fff;
+  position: relative;
+  top: 1rem;
+  border-radius: 8px;
+  padding: 7px 20px;
+  font-size: 18px;
+  color: #000;
+}
+
+.btn_theme {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+hr {
+  color: #ada9a9;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+
+.itemFoooter {
+  button:hover {
+    background: #009f7fcc;
+  }
+}
+.pill {
+  border-radius: 50rem !important;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+.p-7 {
+  padding: 0 7rem;
+}
