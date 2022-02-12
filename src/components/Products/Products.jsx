@@ -4,12 +4,11 @@ import { connect } from "react-redux";
 
 
 
-const ProductsItems = ({products}) => {
-
+const ProductsItems = ({allProduct}) => {
 
     return (
         <>
-         {products.map((item, index) => {
+         {allProduct.map((item, index) => {
            return (
             <Col  key={index} className="col-xl-2 col-md-4 col-lg-3 col-sm-6 col-12">
                <Product productData={item} />
@@ -21,9 +20,9 @@ const ProductsItems = ({products}) => {
 }
 
 const mapStateToProps = (state) => {
-
+  const {products, allProduct} = state.shop
   return {
-    products : state.shop.products
+    allProduct : allProduct.length === 0 ? products : allProduct,
   }
 }
 

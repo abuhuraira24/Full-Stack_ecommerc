@@ -1,11 +1,11 @@
 import * as actionTypes from "../../types/shoppingTypes/shoppingType";
 
 // product Images vastable
-import facewash from "../../../assets/images/faceWash.jpeg";
+import elm from "../../../assets/images/Elm.png";
 import jama from "../../../assets/images/jama.jpeg";
-import vastable from "../../../assets/images/vastable.jpeg";
+import oak from "../../../assets/images/Oak.png";
 import sofa from "../../../assets/images/sofa.png";
-import soffa from "../../../assets/images/soffa.png";
+import mahogany from "../../../assets/images/Mahogany.png";
 import soffa3 from "../../../assets/images/soffa3.png";
 
 const INITIALSTATE = {
@@ -15,7 +15,8 @@ const INITIALSTATE = {
       title: "Face wash",
       desc: "Blhhhhhhh",
       price: "20.00",
-      img: facewash,
+      catagorie: "bed",
+      img: elm,
       pc: "1",
     },
     {
@@ -23,7 +24,8 @@ const INITIALSTATE = {
       title: "Face wash",
       desc: "Blhhhhhhh",
       price: "10.85",
-      img: jama,
+      catagorie: "sofa",
+      img: sofa,
       pc: "2",
     },
     {
@@ -31,7 +33,8 @@ const INITIALSTATE = {
       title: "Face wash",
       desc: "Blhhhhhhh",
       price: "15.00",
-      img: vastable,
+      catagorie: "bed",
+      img: oak,
       pc: "4",
     },
     {
@@ -39,6 +42,7 @@ const INITIALSTATE = {
       title: "Face wash",
       desc: "Blhhhhhhh",
       price: "15.00",
+      catagorie: "sofa",
       img: sofa,
       pc: "4",
     },
@@ -55,13 +59,27 @@ const INITIALSTATE = {
       title: "Face wash",
       desc: "Blhhhhhhh",
       price: "15.00",
-      img: soffa,
+      catagorie: "bed",
+      img: mahogany,
       pc: "4",
     },
-  ], // id, title, des, img etc
+    {
+      id: "6",
+      title: "Face wash",
+      desc: "Blhhhhhhh",
+      price: "15.00",
+      catagorie: "sofa",
+      img: jama,
+      pc: "4",
+    },
+  ],
+
+  allProduct: [],
+
+  // id, title, des, img etc
   cart: [], // id, title, des, img, qty
   currentItem: null,
-  hi: [],
+  filter: "all",
 };
 
 const shopReducer = (state = INITIALSTATE, action) => {
@@ -142,7 +160,22 @@ const shopReducer = (state = INITIALSTATE, action) => {
             )
           : [...state.cart, { qty: 1 }],
       };
-
+    case actionTypes.BED_ITEMS:
+      return {
+        ...state,
+        allProduct: state.products.filter(
+          (item) => item.catagorie === action.payload.val
+        ),
+      };
+    case actionTypes.SOFA_ITEMS:
+      alert("Hii");
+      console.log("sofa");
+      return {
+        ...state,
+        allProduct: state.products.filter(
+          (item) => item.catagorie === action.payload.val
+        ),
+      };
     default:
       return state;
   }

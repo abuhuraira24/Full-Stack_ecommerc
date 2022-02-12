@@ -1,8 +1,11 @@
 .color_theme {
   color: #103178;
 }
-.bg_color {
-  background: #103178;
+.bg_color,
+#bg_color {
+  background: #103178 !important;
+  box-shadow: none !important;
+  color: #fff !important;
 }
 .bg_theme {
   background: #fff;

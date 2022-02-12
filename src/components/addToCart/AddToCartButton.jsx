@@ -20,7 +20,7 @@ const AddToCartButton = ({cart}) => {
             <div className="d-grid gap-2">
                  <Button className="bg_color d-flex align-items-center justify-content-between pill" size="lg">
                     <span>Checkout</span>
-                    <span className="tottalPrice">${totalPrice}</span>
+                    <span>${totalPrice}</span>
                  </Button>
             </div>
          </div>

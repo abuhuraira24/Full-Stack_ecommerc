@@ -78,7 +78,7 @@ form {
     width: 100%;
     text-align: center;
     font-size: 2rem !important;
-    color: #103178 !important;
+    color: #fff !important;
     font-weight: 800;
     span {
       color: #103178;
@@ -118,8 +118,26 @@ form {
       }
     }
   }
+  .addtoUtems {
+    display: none;
+  }
 }
-
+@media (max-width: 444px) {
+  .addToCartItems {
+    width: 240px !important;
+  }
+}
+// .addToCartItems {
+//   width: 240px;
+//   background: #fff;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   height: 100%;
+//   transition: 0.15s;
+//   transition-duration: 5s;
+//   transition-delay: 2s;
+// }
 // Bottom sticky
 .me-auto.navbar-nav {
   display: flex;

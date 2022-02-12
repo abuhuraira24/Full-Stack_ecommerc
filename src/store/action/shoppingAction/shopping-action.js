@@ -29,7 +29,6 @@ export const adJustQty = (itemId, value) => {
 };
 
 export const loadCurrentItem = (itemId, value) => {
-  console.log(value);
   return {
     type: actionTypes.LOAD_CURRENT_ITEM,
     payload: {
@@ -52,6 +51,24 @@ export const decrement = (itemId) => {
     type: actionTypes.DECREMENT_NUMBER,
     payload: {
       id: itemId,
+    },
+  };
+};
+
+export const bedItems = (value) => {
+  return {
+    type: actionTypes.BED_ITEMS,
+    payload: {
+      val: value,
+    },
+  };
+};
+
+export const sofaItems = (value) => {
+  return {
+    type: actionTypes.SOFA_ITEMS,
+    payload: {
+      val: value,
     },
   };
 };

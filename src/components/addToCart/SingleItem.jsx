@@ -5,7 +5,6 @@ import "../../assets/scss/addtocart.scss"
 const SingleItem = ({cartData,removeFromCart,increment,decrement}) => {
    
 
-
     return (
         <div className="d-flex justify-content-between cartItem border-bottom p-3">
             <div className="d-flex justify-content-start align-items-center">
@@ -31,7 +30,7 @@ const SingleItem = ({cartData,removeFromCart,increment,decrement}) => {
             </div>
             <div className="d-flex justify-content-end align-items-center">
                 <span className="fs-7 text">$2.00</span>
-             <button onClick={() => removeFromCart(cartData.id)} className="fs-3 text ms-3">
+             <button  onClick={() => removeFromCart(cartData.id)} className="fs-3 text ms-3">
                 <Close  className="closeBtn"/>
              </button>
             </div>

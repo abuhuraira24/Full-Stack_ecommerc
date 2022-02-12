@@ -1,14 +1,15 @@
-import { useState , useEffect} from "react";
 import {CardGroup, Card, CardImg, CardBody, CardTitle,CardSubtitle,Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import '../../assets/scss/shopping.scss'
 import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 
-const Product = ({productData,addToCart, }) => {
+const Product = ({productData,addToCart, cart}) => {
     
-
+    const iscart = cart.find((item) => productData.id === item.id ? true : false)
  
+
+    
     return (
         <>
         <CardGroup>
@@ -33,7 +34,7 @@ const Product = ({productData,addToCart, }) => {
         
                 <div className="action d-flex justify-content-between align-items-center">
                     <span className="color_theme">${productData.price}</span>
-                    <Button onClick={() => addToCart(productData.id)} className="btn_theme color_theme d-flex justify-content-between align-items-center" >
+                    <Button id={iscart ? "bg_color" : null} onClick={() => addToCart(productData.id)} className="btn_theme addToCart color_theme d-flex justify-content-between align-items-center" >
                        <FaShoppingCart className="mr-4"/>
                         Cart
                     </Button>
@@ -61,7 +62,7 @@ const Product = ({productData,addToCart, }) => {
 const mapStateToProps = (state) => {
 
     return {
-      cart : state.shop.cart
+      cart : state.shop.cart,
     }
   }
   

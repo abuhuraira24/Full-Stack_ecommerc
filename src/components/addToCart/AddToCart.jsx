@@ -16,8 +16,7 @@ const AddToCart = ({cart}) => {
     //     )
     // })}
 
-    const iscarted = cart.length > 0
-    console.log(iscarted)
+    const iscarted = cart.length > 0;
    
     return (
         <>

@@ -21,7 +21,7 @@ const Header = () => {
     <>
       <Navbar fixed="top" className="bg_color">
         <Container fluid>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             FooDex <span>.</span>
           </Navbar.Brand>
 
