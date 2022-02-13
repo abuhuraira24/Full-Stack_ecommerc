@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 const AddToCartButton = ({cart}) => {
 
-   const [totalPrice, setTotalPrice] = useState("00.00")
+   const [totalPrice, setTotalPrice] = useState("0.00")
 
    useEffect(() => {
       let price = 0;
@@ -20,7 +20,7 @@ const AddToCartButton = ({cart}) => {
             <div className="d-grid gap-2">
                  <Button className="bg_color d-flex align-items-center justify-content-between pill" size="lg">
                     <span>Checkout</span>
-                    <span>${totalPrice}</span>
+                    <span className="bg-light text-dark px-3 rounded-pill">${totalPrice}</span>
                  </Button>
             </div>
          </div>

@@ -121,24 +121,30 @@ form {
   .addtoUtems {
     display: none;
   }
+  span.navbar-brand {
+    width: 100% !important;
+    text-align: center;
+  }
+  .navbar.navbar-light.bg-light {
+    display: none;
+  }
 }
 @media (max-width: 444px) {
   .addToCartItems {
     width: 240px !important;
   }
 }
-// .addToCartItems {
-//   width: 240px;
-//   background: #fff;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   height: 100%;
-//   transition: 0.15s;
-//   transition-duration: 5s;
-//   transition-delay: 2s;
-// }
-// Bottom sticky
+span.totallPrices {
+  width: 100%;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+.navbar-toggler {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px !important;
+}
 .me-auto.navbar-nav {
   display: flex;
   justify-content: space-between !important;
@@ -150,4 +156,11 @@ form {
     color: #fff;
     font-size: 2rem;
   }
+}
+
+.carousel-control-prev {
+  left: 22px !important;
+}
+span.carousel-control-next-icon {
+  right: -26px;
 }

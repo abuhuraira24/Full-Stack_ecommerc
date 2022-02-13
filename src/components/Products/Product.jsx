@@ -4,6 +4,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 
+
+
 const Product = ({productData,addToCart, cart}) => {
     
     const iscart = cart.find((item) => productData.id === item.id ? true : false)

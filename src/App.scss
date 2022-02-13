@@ -29,11 +29,11 @@ hr {
   margin-bottom: 0rem;
 }
 
-.itemFoooter {
-  button:hover {
-    background: #009f7fcc;
-  }
-}
+// .itemFoooter {
+//   button:hover {
+//     background: #009f7fcc;
+//   }
+// }
 .pill {
   border-radius: 50rem !important;
 }
@@ -41,6 +41,11 @@ hr {
 button {
   border: none;
   background: transparent;
+}
+button:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .p-7 {
   padding: 0 7rem;
