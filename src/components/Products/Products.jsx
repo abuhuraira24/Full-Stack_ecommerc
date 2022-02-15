@@ -9,12 +9,11 @@ import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 
 const ProductsItems = ({allProduct,isFalse,showDetails,shopDetails,addToCart}) => {
 
-  console.log(shopDetails)
     return (
         <>
          {allProduct.map((item, index) => {
            return (
-            <Col  key={index} className="col-xl-2 col-md-4 col-lg-3 col-sm-6 col-12">
+            <Col  key={index} className="col-xl-3 col-md-4 col-lg-3 col-sm-6 col-12">
                <Product  productData={item} />
             </Col>
            )
