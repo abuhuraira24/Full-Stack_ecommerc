@@ -1,0 +1,22 @@
+@media (min-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 1000px !important;
+  }
+}
+@media (max-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 1000px !important;
+  }
+  .modal-dialog.modal-lg.modal-dialog-centered {
+    margin: 0 !important;
+  }
+  button.bg_color.my-5.btn.btn-secondary.btn-lg {
+    width: 100%;
+  }
+  .modal-content {
+    border: none !important;
+    border-radius: 0% !important;
+  }
+}

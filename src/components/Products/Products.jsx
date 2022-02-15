@@ -1,6 +1,7 @@
 import Product from "./Product";
 import {Modal, ModalHeader, ModalBody, Container, Row,Col,Button} from "reactstrap"
 import "../../assets/scss/addtocart.scss"
+import "../../assets/scss/modal.scss"
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 
@@ -27,19 +28,19 @@ const ProductsItems = ({allProduct,isFalse,showDetails,shopDetails,addToCart}) =
         >
            <ModalHeader  toggle={showDetails}/>
             <ModalBody>
-                <Container>
+                <Container fluid>
                       {shopDetails.map((item) => {
                           return ( 
                             <Row>
-                              <Col className="col-lg-5">
+                              <Col className="col-lg-5 col-sm-12 col-12">
                               <img src={item.img} alt={item.title} />
                             </Col>
-                            <Col className="col-lg-7 mb-5">
+                            <Col className="col-lg-7 mb-5 col-sm-12 col-12">
                               <h2>{item.title}</h2>
                               <span>{item.pc} pc(s)</span>
                               <p className="mt-3">{item.desc}</p>
                               <h3 className="color_theme my-3">${item.price}</h3>
-                              <Button onClick={() => addToCart(item.id)} className="bg_color my-5" size="lg">Add To Shopping Cart</Button>
+                              <Button onClick={() => addToCart(item.id)} className="bg_color my-5" size="lg">Add To Cart</Button>
 
                               <br />
                               <span className="categories">
