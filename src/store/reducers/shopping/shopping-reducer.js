@@ -12,64 +12,72 @@ const INITIALSTATE = {
   products: [
     {
       id: "0",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Ash Double Bed",
+      desc: "A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or on which to place things.",
       price: "20.00",
       catagorie: "bed",
       img: elm,
+      discount: 14,
       pc: "1",
     },
     {
       id: "1",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Aarya Yellow Single",
+      desc: "a piece of furniture, also called a couch",
       price: "10.85",
       catagorie: "sofa",
       img: sofa,
+      discount: 10,
       pc: "2",
     },
     {
       id: "2",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Fredd Single Bed",
+      desc: "Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history it has been a prominent food in large parts of the world.",
       price: "15.00",
       catagorie: "bed",
       img: oak,
+      discount: 24,
       pc: "4",
     },
     {
       id: "3",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Castlery Double Sofa",
+      desc: "a piece of furniture, also called a couch",
       price: "15.00",
       catagorie: "sofa",
       img: sofa,
+      discount: 34,
       pc: "4",
     },
     {
       id: "4",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Safari Ash Single Sofa",
+      desc: "a piece of furniture, also called a couch",
       price: "15.00",
+      catagorie: "sofa",
+      discount: 4,
       img: soffa3,
       pc: "4",
     },
     {
       id: "5",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Alana Single Bed",
+      desc: "A bed is a piece of furniture which is used as a place to sleep or relax.",
       price: "15.00",
       catagorie: "bed",
       img: mahogany,
+      discount: 8,
       pc: "4",
     },
     {
       id: "6",
-      title: "Face wash",
-      desc: "Blhhhhhhh",
+      title: "Aero Stylish Single Sofa",
+      desc: "a piece of furniture, also called a couch",
       price: "15.00",
       catagorie: "sofa",
       img: jama,
+      discount: 7,
       pc: "4",
     },
   ],
@@ -80,6 +88,9 @@ const INITIALSTATE = {
   cart: [], // id, title, des, img, qty
   currentItem: null,
   filter: "all",
+  isFalse: false,
+  shopDetails: [],
+  reletedShop: [],
 };
 
 const shopReducer = (state = INITIALSTATE, action) => {
@@ -168,13 +179,24 @@ const shopReducer = (state = INITIALSTATE, action) => {
         ),
       };
     case actionTypes.SOFA_ITEMS:
-      alert("Hii");
       console.log("sofa");
       return {
         ...state,
         allProduct: state.products.filter(
           (item) => item.catagorie === action.payload.val
         ),
+      };
+
+    case "SHOW_SHOP":
+      const isOpen = state.isFalse;
+      const filterShopDetails = state.products.filter(
+        (item) => item.id === action.payload.id
+      );
+
+      return {
+        ...state,
+        isFalse: isOpen ? false : true,
+        shopDetails: filterShopDetails,
       };
     default:
       return state;

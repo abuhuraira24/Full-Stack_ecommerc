@@ -6,3 +6,4 @@ export const INCREMENT_NUMBER = "INCREMENT_NUMBER";
 export const DECREMENT_NUMBER = "DECREMENT_NUMBER";
 export const BED_ITEMS = "BED_ITEMS";
 export const SOFA_ITEMS = "SOFA_ITEMS";
+export const SHOW_DETAILS = "SHOW_DETAILS";

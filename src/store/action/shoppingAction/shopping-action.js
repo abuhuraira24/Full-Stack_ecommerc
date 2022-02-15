@@ -72,3 +72,13 @@ export const sofaItems = (value) => {
     },
   };
 };
+
+export const showDetailsShop = (itemId) => {
+  alert("action");
+  return {
+    type: actionTypes.SHOW_DETAILS,
+    payload: {
+      id: itemId,
+    },
+  };
+};

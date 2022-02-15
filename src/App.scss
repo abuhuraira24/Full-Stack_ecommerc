@@ -29,18 +29,14 @@ hr {
   margin-bottom: 0rem;
 }
 
-// .itemFoooter {
-//   button:hover {
-//     background: #009f7fcc;
-//   }
-// }
 .pill {
   border-radius: 50rem !important;
 }
 
 button {
-  border: none;
+  border: none !important;
   background: transparent;
+  box-shadow: none !important;
 }
 button:focus {
   border: none !important;

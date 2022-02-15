@@ -125,21 +125,49 @@ form {
     width: 100% !important;
     text-align: center;
   }
-  .navbar.navbar-light.bg-light {
-    display: none;
+  .desktopMenu {
+    display: none !important;
+  }
+  .fixed-bottom {
+    top: 90% !important;
+  }
+  .navbar-brand {
+    font-size: 1.8rem !important;
+  }
+  .fixed-top {
+    padding: 0;
+  }
+  nav.bottomMenu.navbar.navbar-light.bg-light.fixed-bottom {
+    display: block !important;
   }
 }
+
+nav.bottomMenu.navbar.navbar-light.bg-light.fixed-bottom {
+  display: none;
+}
+span.itemCount {
+  position: absolute;
+  right: -5px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 50px;
+  height: 1.5rem;
+  width: 1.5rem;
+  line-height: 26px;
+}
+
 @media (max-width: 444px) {
   .addToCartItems {
     width: 240px !important;
   }
+  .carousel-control-next {
+    right: 4px !important;
+  }
+  .carousel-control-next {
+    right: 10px !important;
+  }
 }
-span.totallPrices {
-  width: 100%;
-  background: #fff;
-  border: none;
-  box-shadow: none;
-}
+
 .navbar-toggler {
   display: flex;
   flex-direction: column;

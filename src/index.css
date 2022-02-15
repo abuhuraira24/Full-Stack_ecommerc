@@ -36,3 +36,7 @@ a {
 a {
   opacity: 1 !important;
 }
+
+img {
+  max-width: 100%;
+}

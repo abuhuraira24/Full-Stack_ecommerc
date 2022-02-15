@@ -1,42 +1,32 @@
-import { useEffect, useState } from "react";
+import { Navbar, Offcanvas } from "react-bootstrap";
 import { FaShoppingCart } from "react-icons/fa";
-import SingleItem from "./SingleItem";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import AddToCartBody from "./AddToCartBody";
-import AddToCartButton from "./AddToCartButton";
-import { Navbar, Container, Offcanvas } from "react-bootstrap";
+import AddToCartButton from "./addToCart/AddToCartButton";
+import AddToCartBody from "./addToCart/AddToCartBody";
+import SingleItem from "./addToCart/SingleItem";
 
-const SideToggle = ({ cart }) => {
-  console.log(cart);
-  const [cartCount, setCartCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0)
-  useEffect(() => {
-    let count = 0;
-    let totalPrice = 0;
 
-    cart.forEach((item) => {
-      count += item.qty;
-      totalPrice += item.qty * item.price
-    });
-    setCartCount(count);
-    setTotalPrice(totalPrice)
-  }, [cart, cartCount]);
+const ToggleMenu = ({cart}) => {
 
-  const iscarted = cart.length > 0;
-
-  return (
-    <>
-      <Navbar bg="light" className="bg_color rounded" expand={false}>
-        <Container fluid>
-          <Navbar.Toggle aria-controls="offcanvasNavbar">
-              <span className="text-light mb-2">
-              <FaShoppingCart /> {cartCount} items
-              </span>
-              <span className="totallPrices rounded">
-                ${totalPrice}
-              </span>
-          </Navbar.Toggle>
-          <Navbar.Offcanvas
+    const [cartCount, setCartCount] = useState(0);
+   
+    useEffect(() => {
+      let count = 0;
+     
+  
+      cart.forEach((item) => {
+        count += item.qty;
+    
+      });
+      setCartCount(count);
+      
+    }, [cart, cartCount]);
+  
+    const iscarted = cart.length > 0;
+    return (
+        <>
+        <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
             placement="end"
@@ -68,16 +58,13 @@ const SideToggle = ({ cart }) => {
                   <AddToCartButton />
             </Offcanvas.Header>
           </Navbar.Offcanvas>
-        </Container>
-      </Navbar>
-    </>
-  );
-};
-
+        </>
+    );
+}
 const mapStateToProps = (state) => {
-  return {
-    cart: state.shop.cart,
+    return {
+      cart: state.shop.cart,
+    };
   };
-};
-
-export default connect(mapStateToProps)(SideToggle);
+  
+export default connect(mapStateToProps)(ToggleMenu);

@@ -1,12 +1,12 @@
 import { Container } from "reactstrap";
 import Header from "../parts/Header";
-import SideToggle from "../components/addToCart/SideToggle"
+import DesktopMenu from "./addToCart/DesktopMenu"
 
 const Layout = ({children}) => {
 
     return (
             <>
-             <SideToggle />
+             <DesktopMenu />
                 <Container fluid className="p-0">
                   <Header />
                 </Container>

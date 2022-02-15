@@ -9,13 +9,6 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const AddToCart = ({cart}) => {
 
-
-    // {cart.map((item, index) => {
-    //     return (
-    //      <SingleItem key={index} cartData={item} />
-    //     )
-    // })}
-
     const iscarted = cart.length > 0;
    
     return (

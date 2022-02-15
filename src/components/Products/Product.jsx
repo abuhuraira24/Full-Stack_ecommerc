@@ -1,16 +1,16 @@
-import {CardGroup, Card, CardImg, CardBody, CardTitle,CardSubtitle,Button, Modal, ModalHeader, ModalBody} from "reactstrap"
+import {CardGroup, Card, CardImg, CardBody, CardTitle,CardSubtitle,Button} from "reactstrap"
 import '../../assets/scss/shopping.scss'
+import "../../assets/scss/Shopping-details.scss"
 import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
 
 
 
-const Product = ({productData,addToCart, cart}) => {
+const Product = ({productData,addToCart, cart,showDetails}) => {
     
+   
     const iscart = cart.find((item) => productData.id === item.id ? true : false)
- 
-
     
     return (
         <>
@@ -22,14 +22,25 @@ const Product = ({productData,addToCart, cart}) => {
                 top
                 width="100%"
                 className="mt-3"
+                role="button"
+                onClick={() => showDetails(productData.id)}
                 />
+                <span className="discount"> {productData.discount}% </span>
+               
                 <CardBody>
-                <CardTitle tag="h6" className="mt-3">
+                <CardTitle 
+                 tag="h6" 
+                 className="mt-3"
+                 role="button"
+                 onClick={() => showDetails(productData.id)}
+                 
+                 >
                     {productData.title}
                 </CardTitle>
                 <CardSubtitle
-                    className="mb-4 text-muted"
-                    tag="h6"
+                  className="mb-4 text-muted"
+                  tag="h6"
+
                 >
                    {productData.pc} pc(s)
                 </CardSubtitle>
@@ -43,18 +54,9 @@ const Product = ({productData,addToCart, cart}) => {
                 </div>
                 </CardBody>
            </Card>
+
         </CardGroup>
-        {/* <Modal 
-          isOpen={isOpen}
-          toggle={() =>togglePopup()}
-        >
-            <ModalHeader toggle={() =>togglePopup()}>
-                header.....
-            </ModalHeader>
-            <ModalBody>
-                Body.....
-            </ModalBody>
-        </Modal> */}
+
         </>
     );
 }
@@ -62,16 +64,24 @@ const Product = ({productData,addToCart, cart}) => {
 
 
 const mapStateToProps = (state) => {
-
     return {
       cart : state.shop.cart,
+      isFalse : state.shop.isFalse,
     }
   }
   
+
+const showDetails = (id) => ({
+    type : "SHOW_SHOP",
+    payload : {
+        id : id
+    }
+  })
 const mapDispatchToProps = dispatch => {
 
     return {
-        addToCart : (id) => dispatch(addToCart(id))
+        addToCart : (id) => dispatch(addToCart(id)),
+        showDetails : (id) => dispatch(showDetails(id))
     }
 }
 
