@@ -4,10 +4,10 @@ import "../../assets/scss/Shopping-details.scss"
 import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
+import Skeleton from "react-loading-skeleton";
 
 
-
-const Product = ({productData,addToCart, cart,showDetails}) => {
+const Product = ({productData,addToCart, cart,showDetails,loading}) => {
     
    
     const iscart = cart.find((item) => productData.id === item.id ? true : false)
@@ -16,15 +16,15 @@ const Product = ({productData,addToCart, cart,showDetails}) => {
         <>
         <CardGroup>
            <Card>
-                <CardImg
+
+                {loading ? <Skeleton height={200} highlightColor="#fff"/> : <CardImg
                 alt="Card image cap"
                 src={productData.img}
                 top
                 width="100%"
-                className="mt-3"
                 role="button"
                 onClick={() => showDetails(productData.id)}
-                />
+                />}
                 <span className="discount"> {productData.discount}% </span>
                
                 <CardBody>
@@ -35,22 +35,26 @@ const Product = ({productData,addToCart, cart,showDetails}) => {
                  onClick={() => showDetails(productData.id)}
                  
                  >
-                    {productData.title}
+                    {/* {productData.title} */}
+                    {loading ? <Skeleton highlightColor="#fff" height={15}/> : <> {productData.title}</>}
                 </CardTitle>
                 <CardSubtitle
                   className="mb-4 text-muted"
                   tag="h6"
 
                 >
-                   {productData.pc} pc(s)
+                   {/* {productData.pc} pc(s) */}
+                   {loading ? <Skeleton highlightColor="#fff" height={15}/> : <> {productData.pc} pc(s)</>}
                 </CardSubtitle>
         
                 <div className="action d-flex justify-content-between align-items-center">
-                    <span className="color_theme">${productData.price}</span>
-                    <Button id={iscart ? "bg_color" : null} onClick={() => addToCart(productData.id)} className="btn_theme addToCart color_theme d-flex justify-content-between align-items-center" >
+                   
+                    {loading ? <Skeleton highlightColor="#fff" width={50} height={20}/> : <> <span className="color_theme">${productData.price}</span></>}
+                    {loading ? <Skeleton highlightColor="#fff" width={50} height={20}/> : <><Button id={iscart ? "bg_color" : null} onClick={() => addToCart(productData.id)} className="btn_theme addToCart color_theme d-flex justify-content-between align-items-center" >
                        <FaShoppingCart className="mr-4"/>
                         Cart
-                    </Button>
+                    </Button></>}
+  
                 </div>
                 </CardBody>
            </Card>
@@ -67,11 +71,13 @@ const mapStateToProps = (state) => {
     return {
       cart : state.shop.cart,
       isFalse : state.shop.isFalse,
+      loading : state.shop.loading
     }
   }
   
 
 const showDetails = (id) => ({
+  
     type : "SHOW_SHOP",
     payload : {
         id : id

@@ -1,15 +1,18 @@
 import {Container,Row} from "reactstrap"
-import { connect } from "react-redux";
 import { BiBed,BiChair,BiTable } from "react-icons/bi";
 import { bedItems, sofaItems } from "../store/action/shoppingAction/shopping-action";
-const SideBar = ({bedItems}) => {
+import { useDispatch } from "react-redux";
 
+const SideBar = () => {
+
+  const dispatch = useDispatch()
 
     return (
         <Container>
             <Row className="d-flex">
-                 <div onClick={() => bedItems("bed")}  role="button" className="item">
+                 <div onClick={() => dispatch(bedItems("bed"))}  role="button" className="item">
                    <BiBed />
+                   
                    <span>Bed</span>
                  </div>
                  <div className="item" role="button">
@@ -31,10 +34,11 @@ const SideBar = ({bedItems}) => {
 }
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    bedItems : (id) => dispatch(bedItems(id)),
-    sofaItems : (id) => dispatch(sofaItems(id))
-  }
-}
-export default connect(null,mapDispatchToProps)(SideBar)
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     bedItems : (id) => dispatch(bedItems(id)),
+//     sofaItems : (id) => dispatch(sofaItems(id))
+//   }
+// }
+// export default connect(null,mapDispatchToProps)(SideBar)
+export default SideBar

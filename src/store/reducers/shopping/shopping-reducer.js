@@ -9,81 +9,9 @@ import mahogany from "../../../assets/images/Mahogany.png";
 import soffa3 from "../../../assets/images/soffa3.png";
 
 const INITIALSTATE = {
-  products: [
-    {
-      id: "0",
-      title: "Ash Double Bed",
-      desc: "A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or on which to place things.",
-      price: "20.00",
-      catagorie: "bed",
-      img: elm,
-      discount: 14,
-      pc: "1",
-    },
-    {
-      id: "1",
-      title: "Aarya Yellow Single",
-      desc: "a piece of furniture, also called a couch",
-      price: "10.85",
-      catagorie: "sofa",
-      img: sofa,
-      discount: 10,
-      pc: "2",
-    },
-    {
-      id: "2",
-      title: "Fredd Single Bed",
-      desc: "Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history it has been a prominent food in large parts of the world.",
-      price: "15.00",
-      catagorie: "bed",
-      img: oak,
-      discount: 24,
-      pc: "4",
-    },
-    {
-      id: "3",
-      title: "Castlery Double Sofa",
-      desc: "a piece of furniture, also called a couch",
-      price: "15.00",
-      catagorie: "sofa",
-      img: sofa,
-      discount: 34,
-      pc: "4",
-    },
-    {
-      id: "4",
-      title: "Safari Ash Single Sofa",
-      desc: "a piece of furniture, also called a couch",
-      price: "15.00",
-      catagorie: "sofa",
-      discount: 4,
-      img: soffa3,
-      pc: "4",
-    },
-    {
-      id: "5",
-      title: "Alana Single Bed",
-      desc: "A bed is a piece of furniture which is used as a place to sleep or relax.",
-      price: "15.00",
-      catagorie: "bed",
-      img: mahogany,
-      discount: 8,
-      pc: "4",
-    },
-    {
-      id: "6",
-      title: "Aero Stylish Single Sofa",
-      desc: "a piece of furniture, also called a couch",
-      price: "15.00",
-      catagorie: "sofa",
-      img: jama,
-      discount: 7,
-      pc: "4",
-    },
-  ],
-
   allProduct: [],
-
+  loading: false,
+  data: [],
   // id, title, des, img etc
   cart: [], // id, title, des, img, qty
   currentItem: null,
@@ -91,13 +19,30 @@ const INITIALSTATE = {
   isFalse: false,
   shopDetails: [],
   reletedShop: [],
+  searchTerm: "",
 };
 
 const shopReducer = (state = INITIALSTATE, action) => {
   switch (action.type) {
+    case actionTypes.PRODUCTS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case actionTypes.PRODUCT_DATA_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case actionTypes.FAILED_TO_FETCH:
+      return {
+        ...state,
+      };
     case actionTypes.ADD_TO_CART:
       // Get the item data from the products array
-      const item = state.products.find(
+      const item = state.data.find(
         (product) => product.id === action.payload.id
       );
 
@@ -175,24 +120,13 @@ const shopReducer = (state = INITIALSTATE, action) => {
       console.log(state.filter);
       return {
         ...state,
-
-        allProduct: state.products.filter(
-          (item) => item.catagorie === state.filter
-        ),
         filter: action.payload.val,
-      };
-    case actionTypes.SOFA_ITEMS:
-      console.log("sofa");
-      return {
-        ...state,
-        allProduct: state.products.filter(
-          (item) => item.catagorie === action.payload.val
-        ),
       };
 
     case "SHOW_SHOP":
+      console.log(action.payload.id);
       const isOpen = state.isFalse;
-      const filterShopDetails = state.products.filter(
+      const filterShopDetails = state.data.filter(
         (item) => item.id === action.payload.id
       );
 
@@ -200,6 +134,12 @@ const shopReducer = (state = INITIALSTATE, action) => {
         ...state,
         isFalse: isOpen ? false : true,
         shopDetails: filterShopDetails,
+      };
+
+    case "HANDLE_SEARCH":
+      const val = action.payload.val;
+      return {
+        searchTerm: val,
       };
     default:
       return state;

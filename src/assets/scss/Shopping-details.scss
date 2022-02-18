@@ -16,3 +16,27 @@ body.modal-open {
     border: 1px solid #ddd;
   }
 }
+
+// inrements value
+.incrementValue {
+  div {
+    display: inline-block;
+    background: #fff;
+    font-size: 1.4rem;
+    border-radius: 0.3rem;
+    overflow: hidden;
+
+    button {
+      background: #103178;
+      color: #fff;
+      padding: 4px 8px;
+    }
+    span {
+      margin: 0 5px;
+    }
+  }
+}
+
+.react-loading-skeleton {
+  line-height: inherit !important;
+}

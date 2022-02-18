@@ -1,17 +1,44 @@
 import Product from "./Product";
+import axios from "axios";
+import { useEffect } from "react";
 import {Modal, ModalHeader, ModalBody, Container, Row,Col,Button} from "reactstrap"
 import "../../assets/scss/addtocart.scss"
 import "../../assets/scss/modal.scss"
 import { connect } from "react-redux";
-import { addToCart } from "../../store/action/shoppingAction/shopping-action";
+import { useDispatch } from "react-redux";
+import { addToCart, product_request,product_data_success,increment, decrement } from "../../store/action/shoppingAction/shopping-action";
 
 
+const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,loading}) => {
+  
 
-const ProductsItems = ({allProduct,isFalse,showDetails,shopDetails,addToCart}) => {
+  const dispatch = useDispatch()
+  const fetch_product = async () => {
+      
+      dispatch(product_request())
+   
+    axios
+    .get(
+      "https://mocki.io/v1/fd053d59-444f-4ef2-a03c-4fefbab89479"
+    )
+    .then((res) => {
+    
+      dispatch(product_data_success(res.data))
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+   
+  };
+  
+  useEffect(() => {
+    fetch_product()
+  },[])
+
 
     return (
         <>
-         {allProduct.map((item, index) => {
+         {data.map((item, index) => {
            return (
             <Col  key={index} className="col-xl-3 col-md-4 col-lg-3 col-sm-6 col-12">
                <Product  productData={item} />
@@ -28,9 +55,10 @@ const ProductsItems = ({allProduct,isFalse,showDetails,shopDetails,addToCart}) =
            <ModalHeader  toggle={showDetails}/>
             <ModalBody>
                 <Container fluid>
-                      {shopDetails.map((item) => {
+                      {shopDetails.map((item, index) => {
+                        console.log(item)
                           return ( 
-                            <Row>
+                            <Row key={index}>
                               <Col className="col-lg-5 col-sm-12 col-12">
                               <img src={item.img} alt={item.title} />
                             </Col>
@@ -39,12 +67,25 @@ const ProductsItems = ({allProduct,isFalse,showDetails,shopDetails,addToCart}) =
                               <span>{item.pc} pc(s)</span>
                               <p className="mt-3">{item.desc}</p>
                               <h3 className="color_theme my-3">${item.price}</h3>
+                              <div className="incrementValue">
+                                <div>
+                                <button onClick={() => increment()}>
+                                      +
+                                  </button>
+                                    <span>
+                                      0
+                                    </span>
+                                 <button onClick={() => decrement()}>
+                                  -
+                                 </button>
+                                </div>
+                              </div>
                               <Button onClick={() => addToCart(item.id)} className="bg_color my-5" size="lg">Add To Cart</Button>
 
                               <br />
                               <span className="categories">
                                 Categories
-                                <span className="rounded">{item.catagorie}</span>
+                                <span className="rounded">{item.category}</span>
                                 </span>
                             </Col>
                             <hr className="my-4"/>
@@ -70,6 +111,9 @@ const mapStateToProps = (state) => {
     allProduct : allProduct.length === 0 ? products : allProduct,
     isFalse : isFalse,
     shopDetails : shopDetails,
+    data : state.shop.data,
+    cart : state.shop.cart,
+    loading : state.shop.loading
 
   }
 }
@@ -84,7 +128,9 @@ const mapDispatchToProps = dispatch => {
 
 return {
     showDetails : (id) => dispatch(showDetails(id)),
-    addToCart : (id) => dispatch(addToCart(id))
+    addToCart : (id) => dispatch(addToCart(id)),
+    increment : (id) => dispatch(increment(id)),
+    decrement : (id) => decrement(decrement(id))
 }
 }
 
