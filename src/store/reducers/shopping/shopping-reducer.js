@@ -1,12 +1,6 @@
 import * as actionTypes from "../../types/shoppingTypes/shoppingType";
 
 // product Images vastable
-import elm from "../../../assets/images/Elm.png";
-import jama from "../../../assets/images/jama.jpeg";
-import oak from "../../../assets/images/Oak.png";
-import sofa from "../../../assets/images/sofa.png";
-import mahogany from "../../../assets/images/Mahogany.png";
-import soffa3 from "../../../assets/images/soffa3.png";
 
 const INITIALSTATE = {
   allProduct: [],
@@ -63,7 +57,6 @@ const shopReducer = (state = INITIALSTATE, action) => {
       };
 
     case actionTypes.REMOVE_FROM_CART:
-      console.log(action.payload.id);
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
@@ -124,8 +117,8 @@ const shopReducer = (state = INITIALSTATE, action) => {
       };
 
     case "SHOW_SHOP":
-      console.log(action.payload.id);
       const isOpen = state.isFalse;
+      // const reletedShop = state.data.map((item) => item.c)
       const filterShopDetails = state.data.filter(
         (item) => item.id === action.payload.id
       );

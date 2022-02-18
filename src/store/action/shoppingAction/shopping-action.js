@@ -94,12 +94,13 @@ export const sofaItems = (value) => {
   };
 };
 
-export const showDetailsShop = (itemId) => {
+export const showDetailsShop = (itemId, category) => {
   alert("action");
   return {
     type: "SHOW_DETAILS",
     payload: {
       id: itemId,
+      category: category,
     },
   };
 };

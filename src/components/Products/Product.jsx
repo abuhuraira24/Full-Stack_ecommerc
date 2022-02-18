@@ -9,6 +9,7 @@ import Skeleton from "react-loading-skeleton";
 
 const Product = ({productData,addToCart, cart,showDetails,loading}) => {
     
+  console.log(productData)
    
     const iscart = cart.find((item) => productData.id === item.id ? true : false)
     
@@ -23,7 +24,7 @@ const Product = ({productData,addToCart, cart,showDetails,loading}) => {
                 top
                 width="100%"
                 role="button"
-                onClick={() => showDetails(productData.id)}
+                onClick={() => showDetails(productData.id, productData.category)}
                 />}
                 <span className="discount"> {productData.discount}% </span>
                
@@ -87,7 +88,7 @@ const mapDispatchToProps = dispatch => {
 
     return {
         addToCart : (id) => dispatch(addToCart(id)),
-        showDetails : (id) => dispatch(showDetails(id))
+        showDetails : (id,category) => dispatch(showDetails(id,category))
     }
 }
 

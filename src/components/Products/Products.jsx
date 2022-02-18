@@ -56,7 +56,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
             <ModalBody>
                 <Container fluid>
                       {shopDetails.map((item, index) => {
-                        console.log(item)
+                        
                           return ( 
                             <Row key={index}>
                               <Col className="col-lg-5 col-sm-12 col-12">
