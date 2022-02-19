@@ -36,7 +36,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
   
   useEffect(() => {
     fetch_product()
-  },[])
+  })
 
 
     return (
