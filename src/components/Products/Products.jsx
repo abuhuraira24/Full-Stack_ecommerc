@@ -36,7 +36,8 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
   
   useEffect(() => {
     fetch_product()
-  })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
 
     return (
