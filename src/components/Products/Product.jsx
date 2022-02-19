@@ -9,14 +9,13 @@ import Skeleton from "react-loading-skeleton";
 
 const Product = ({productData,addToCart, cart,showDetails,loading}) => {
     
-  console.log(productData)
    
     const iscart = cart.find((item) => productData.id === item.id ? true : false)
     
     return (
         <>
-        <CardGroup>
-           <Card>
+       <CardGroup>
+            <Card>
 
                 {loading ? <Skeleton height={200} highlightColor="#fff"/> : <CardImg
                 alt="Card image cap"
@@ -24,7 +23,7 @@ const Product = ({productData,addToCart, cart,showDetails,loading}) => {
                 top
                 width="100%"
                 role="button"
-                onClick={() => showDetails(productData.id, productData.category)}
+                onClick={() => showDetails(productData.id)}
                 />}
                 <span className="discount"> {productData.discount}% </span>
                
@@ -88,7 +87,7 @@ const mapDispatchToProps = dispatch => {
 
     return {
         addToCart : (id) => dispatch(addToCart(id)),
-        showDetails : (id,category) => dispatch(showDetails(id,category))
+        showDetails : (id) => dispatch(showDetails(id))
     }
 }
 

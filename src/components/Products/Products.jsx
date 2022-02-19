@@ -1,7 +1,8 @@
 import Product from "./Product";
 import axios from "axios";
 import { useEffect } from "react";
-import {Modal, ModalHeader, ModalBody, Container, Row,Col,Button} from "reactstrap"
+
+import {Modal, ModalHeader, ModalBody, Container,Button, Row,Col} from "reactstrap"
 import "../../assets/scss/addtocart.scss"
 import "../../assets/scss/modal.scss"
 import { connect } from "react-redux";
@@ -9,8 +10,10 @@ import { useDispatch } from "react-redux";
 import { addToCart, product_request,product_data_success,increment, decrement } from "../../store/action/shoppingAction/shopping-action";
 
 
-const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,loading}) => {
+const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,loading,reletedShop}) => {
   
+
+  console.log(reletedShop)
 
   const dispatch = useDispatch()
   const fetch_product = async () => {
@@ -68,7 +71,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
                               <p className="mt-3">{item.desc}</p>
                               <h3 className="color_theme my-3">${item.price}</h3>
                               <div className="incrementValue">
-                                <div>
+                                {/* <div>
                                 <button onClick={() => increment()}>
                                       +
                                   </button>
@@ -78,7 +81,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
                                  <button onClick={() => decrement()}>
                                   -
                                  </button>
-                                </div>
+                                </div> */}
                               </div>
                               <Button onClick={() => addToCart(item.id)} className="bg_color my-5" size="lg">Add To Cart</Button>
 
@@ -95,9 +98,23 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
                             </Col>
                             <hr className="my-4"/>
                             
+                            <Row>
+                              {/* {shopDetails.map((item => {
+                                const dataCat = data.filter((cat) => cat.category === item.category)
+                                 
+                               {dataCat.map((itm,index) => {
+                                 return (
+                                   
+                                 )
+                               })}
+                                
+                              }))} */}
+                            </Row>
                             </Row>
                           ) 
                           })}
+
+                  
                 </Container>
             </ModalBody>
         </Modal>
@@ -113,7 +130,8 @@ const mapStateToProps = (state) => {
     shopDetails : shopDetails,
     data : state.shop.data,
     cart : state.shop.cart,
-    loading : state.shop.loading
+    loading : state.shop.loading,
+    reletedShop : state.shop.reletedShop
 
   }
 }

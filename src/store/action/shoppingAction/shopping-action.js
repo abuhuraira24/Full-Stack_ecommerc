@@ -94,16 +94,15 @@ export const sofaItems = (value) => {
   };
 };
 
-export const showDetailsShop = (itemId, category) => {
-  alert("action");
-  return {
-    type: "SHOW_DETAILS",
-    payload: {
-      id: itemId,
-      category: category,
-    },
-  };
-};
+// export const showDetailsShop = (itemId) => {
+//   alert("action");
+//   return {
+//     type: "SHOW_DETAILS",
+//     payload: {
+//       id: itemId,
+//     },
+//   };
+// };
 
 export const handleSearch = (val) => {
   return {

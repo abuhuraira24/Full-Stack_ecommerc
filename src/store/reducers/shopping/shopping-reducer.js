@@ -118,10 +118,17 @@ const shopReducer = (state = INITIALSTATE, action) => {
 
     case "SHOW_SHOP":
       const isOpen = state.isFalse;
-      // const reletedShop = state.data.map((item) => item.c)
       const filterShopDetails = state.data.filter(
         (item) => item.id === action.payload.id
       );
+
+      // releted data
+      // var result = state.shopDetails.filter(function (o1) {
+      //   return state.data.some(function (o2) {
+      //     return o1.category === o2.category; // return the ones with equal id
+      //   });
+      // });
+      // console.log(result);
 
       return {
         ...state,
