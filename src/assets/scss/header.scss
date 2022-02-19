@@ -114,8 +114,6 @@ form {
   .bottomSticky {
     .navbar-nav {
       width: 100%;
-      a {
-      }
     }
   }
   .addtoUtems {
@@ -139,6 +137,9 @@ form {
   }
   nav.bottomMenu.navbar.navbar-light.bg-light.fixed-bottom {
     display: block !important;
+  }
+  .mb_100 {
+    margin-bottom: 100px !important;
   }
 }
 

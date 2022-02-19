@@ -3,7 +3,6 @@ import * as actionTypes from "../../types/shoppingTypes/shoppingType";
 // product Images vastable
 
 const INITIALSTATE = {
-  allProduct: [],
   loading: false,
   data: [],
   // id, title, des, img etc
@@ -13,7 +12,6 @@ const INITIALSTATE = {
   isFalse: false,
   shopDetails: [],
   reletedShop: [],
-  searchTerm: "",
 };
 
 const shopReducer = (state = INITIALSTATE, action) => {
@@ -122,25 +120,12 @@ const shopReducer = (state = INITIALSTATE, action) => {
         (item) => item.id === action.payload.id
       );
 
-      // releted data
-      // var result = state.shopDetails.filter(function (o1) {
-      //   return state.data.some(function (o2) {
-      //     return o1.category === o2.category; // return the ones with equal id
-      //   });
-      // });
-      // console.log(result);
-
       return {
         ...state,
         isFalse: isOpen ? false : true,
         shopDetails: filterShopDetails,
       };
 
-    case "HANDLE_SEARCH":
-      const val = action.payload.val;
-      return {
-        searchTerm: val,
-      };
     default:
       return state;
   }

@@ -93,22 +93,3 @@ export const sofaItems = (value) => {
     },
   };
 };
-
-// export const showDetailsShop = (itemId) => {
-//   alert("action");
-//   return {
-//     type: "SHOW_DETAILS",
-//     payload: {
-//       id: itemId,
-//     },
-//   };
-// };
-
-export const handleSearch = (val) => {
-  return {
-    type: "HANDLE_SEARCH",
-    payload: {
-      value: val,
-    },
-  };
-};

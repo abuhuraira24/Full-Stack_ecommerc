@@ -11,4 +11,3 @@ export const DECREMENT_NUMBER = "DECREMENT_NUMBER";
 export const BED_ITEMS = "BED_ITEMS";
 export const SOFA_ITEMS = "SOFA_ITEMS";
 export const SHOW_DETAILS = "SHOW_DETAILS";
-export const HANDLE_SEARCH = "HANDLE_SEARCH";

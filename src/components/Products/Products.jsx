@@ -12,9 +12,6 @@ import { addToCart, product_request,product_data_success,increment, decrement } 
 
 const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,loading,reletedShop}) => {
   
-
-  console.log(reletedShop)
-
   const dispatch = useDispatch()
   const fetch_product = async () => {
       
@@ -126,7 +123,6 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
 const mapStateToProps = (state) => {
   const {products, allProduct,shopDetails,isFalse} = state.shop
   return {
-    allProduct : allProduct.length === 0 ? products : allProduct,
     isFalse : isFalse,
     shopDetails : shopDetails,
     data : state.shop.data,

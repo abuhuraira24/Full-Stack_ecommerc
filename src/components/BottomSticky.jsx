@@ -6,7 +6,7 @@ import home from "../assets/images/home.png"
 import shop from "../assets/images/shop.png"
 import { connect } from "react-redux"
 import ToggleMenu from "./ToggleMenu";
-
+import { HashLink } from 'react-router-hash-link';
 
 
 const BottomSticky = ({cart}) => {
@@ -37,9 +37,9 @@ const BottomSticky = ({cart}) => {
                 <span className="itemCount bg_color">{cartCount}</span>
                 <img src={shop} alt="shop" />
             </Navbar.Toggle>
-            <Nav.Link href="#pricing">
+            <HashLink to="#">
                 <img src={home} alt="list" />
-            </Nav.Link>
+            </HashLink>
       
          
             <ToggleMenu />
