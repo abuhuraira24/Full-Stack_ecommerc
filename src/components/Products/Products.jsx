@@ -121,7 +121,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
 }
 
 const mapStateToProps = (state) => {
-  const {products, allProduct,shopDetails,isFalse} = state.shop
+  const {shopDetails,isFalse} = state.shop
   return {
     isFalse : isFalse,
     shopDetails : shopDetails,
