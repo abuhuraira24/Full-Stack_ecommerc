@@ -77,19 +77,28 @@ export const decrement = (itemId) => {
 };
 
 export const bedItems = (value) => {
+  console.log(value);
   return {
     type: actionTypes.BED_ITEMS,
-    payload: {
-      val: value,
-    },
+    payload: value,
   };
 };
 
-export const sofaItems = (value) => {
+export const woodItems = (value) => {
   return {
-    type: actionTypes.SOFA_ITEMS,
-    payload: {
-      val: value,
-    },
+    type: actionTypes.WOOD_ITEMS,
+    payload: value,
+  };
+};
+export const phoneItems = (value) => {
+  return {
+    type: actionTypes.PHONE_ITEMS,
+    payload: value,
+  };
+};
+export const tableItems = (value) => {
+  return {
+    type: actionTypes.TABLE_ITEMS,
+    payload: value,
   };
 };

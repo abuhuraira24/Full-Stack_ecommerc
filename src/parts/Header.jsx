@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import {
   Container,
   Navbar,
@@ -12,6 +13,7 @@ import BottomSticky from "../components/BottomSticky";
 import "../assets/scss/header.scss";
 // React icons
 import { FaBeer } from "react-icons/fa";
+   
 
 const Header = () => {
 
@@ -19,9 +21,12 @@ const Header = () => {
     <>
       <Navbar fixed="top" className="bg_color">
         <Container fluid>
+
+          <HashLink to="#">
           <Navbar.Brand>
             FooDex <span>.</span>
           </Navbar.Brand>
+          </HashLink>
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto ms-2">
@@ -64,6 +69,7 @@ const Header = () => {
                 placeholder="Search"
                 className="ms-4 me-4 py-2"
                 aria-label="Search"
+                
               />
             </Form>
 

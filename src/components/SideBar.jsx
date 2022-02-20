@@ -1,44 +1,62 @@
 import {Container,Row} from "reactstrap"
 import { BiBed,BiChair,BiTable } from "react-icons/bi";
-import { bedItems, sofaItems } from "../store/action/shoppingAction/shopping-action";
-import { useDispatch } from "react-redux";
+import { FaMobileAlt } from "react-icons/fa";
+import { bedItems, woodItems,phoneItems,tableItems} from "../store/action/shoppingAction/shopping-action";
+import { connect } from "react-redux";
+import { HashLink } from "react-router-hash-link";
 
-const SideBar = () => {
+const SideBar = ({bedItems,woodItems,phoneItems,tableItems}) => {
 
-  const dispatch = useDispatch()
 
     return (
         <Container>
             <Row className="d-flex">
-                 <div onClick={() => dispatch(bedItems("bed"))}  role="button" className="item">
-                   <BiBed />
-                   
-                   <span>Bed</span>
-                 </div>
-                 <div className="item" role="button">
-                   <BiChair />
-                   <span>Chair</span>
-                 </div>
-                 <div onClick={() => sofaItems("sofa")} role="button"  className="item">
-                   <BiBed />
-                   <span>Sofa</span>
-                 </div>
-                 <div className="item">
-                   <BiTable />
+                 <HashLink to="#products" className="sideFilter">
+                  <div onClick={() => bedItems("accessories")}  role="button" className="d-inline-block w-100">
+                    <div className="item">
+                    <BiBed />
+                    <span>Accessories</span>
+                    </div>
+                  </div>
+                 </HashLink>
+                 <HashLink to="#products" className="sideFilter">
+                  <div onClick={() => woodItems("wood")}  role="button" className="d-inline-block w-100">
+                    <div className="item">
+                    <BiChair />
+                   <span>wood</span>
+                    </div>
+                  </div>
+                 </HashLink>
+                 <HashLink to="#products" className="sideFilter">
+                  <div onClick={() => phoneItems("phone")}  role="button" className="d-inline-block w-100">
+                    <div className="item">
+                    <FaMobileAlt />
+                   <span>Phone</span>
+                    </div>
+                  </div>
+                 </HashLink>
+                 <HashLink to="#products" className="sideFilter">
+                  <div onClick={() => tableItems("table")}  role="button" className="d-inline-block w-100">
+                    <div className="item">
+                    <BiTable />
                    <span>Table</span>
-                 </div>
-                 
+                    </div>
+                  </div>
+                 </HashLink>
+
             </Row>
         </Container>
     )
 }
 
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     bedItems : (id) => dispatch(bedItems(id)),
-//     sofaItems : (id) => dispatch(sofaItems(id))
-//   }
-// }
-// export default connect(null,mapDispatchToProps)(SideBar)
-export default SideBar
+const mapDispatchToProps = dispatch => {
+  return {
+    bedItems : (id) => dispatch(bedItems(id)),
+    woodItems : (id) => dispatch(woodItems(id)),
+    phoneItems : (id) => dispatch(phoneItems(id)),
+    tableItems : (id) => dispatch(tableItems(id))
+  }
+}
+export default connect(null,mapDispatchToProps)(SideBar)
+

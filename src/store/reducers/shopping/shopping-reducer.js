@@ -108,10 +108,32 @@ const shopReducer = (state = INITIALSTATE, action) => {
           : [...state.cart, { qty: 1 }],
       };
     case actionTypes.BED_ITEMS:
-      console.log(state.filter);
+      state.filter = action.payload;
       return {
         ...state,
-        filter: action.payload.val,
+      };
+    case actionTypes.WOOD_ITEMS:
+      console.log(action.payload);
+      state.filter = action.payload;
+      return {
+        ...state,
+      };
+    case actionTypes.PHONE_ITEMS:
+      console.log(action.payload);
+      state.filter = action.payload;
+      return {
+        ...state,
+      };
+    case actionTypes.TABLE_ITEMS:
+      console.log(action.payload);
+      state.filter = action.payload;
+      return {
+        ...state,
+      };
+    case actionTypes.SHOW_DETAILS:
+      state.filter = action.payload;
+      return {
+        ...state,
       };
 
     case "SHOW_SHOP":

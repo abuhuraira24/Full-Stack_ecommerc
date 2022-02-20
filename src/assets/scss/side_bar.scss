@@ -5,7 +5,7 @@
 }
 
 .main {
-  width: 70%;
+  width: 90%;
 
   background: #dddddd30;
   margin: 0 18px;
@@ -19,18 +19,17 @@
   }
 }
 .side_bar {
-  width: 30%;
+  width: 10%;
   height: 25vh;
   position: -webkit-sticky;
   position: sticky;
   top: 128px;
 }
 .item {
-  width: 40% !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 0;
+  padding: 40px 26px;
   align-items: center;
   background: #fff;
   margin: 12px;
@@ -44,4 +43,10 @@
 }
 a.carousel-control-next {
   opacity: 1;
+}
+.sideFilter {
+  color: #103178;
+}
+.sideFilter:hover {
+  color: #18377a;
 }
