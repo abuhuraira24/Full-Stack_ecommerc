@@ -1,5 +1,5 @@
 import { Container } from "reactstrap";
-import Header from "../parts/Header";
+import Header from "../parts/Header"
 import DesktopMenu from "./addToCart/DesktopMenu"
 
 const Layout = ({children}) => {
