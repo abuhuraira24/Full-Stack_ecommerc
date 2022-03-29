@@ -1,0 +1,196 @@
+// Table of content
+
+// 01 header
+
+// 01 header
+.navbar {
+  box-shadow: 0 4px 10px rgb(25 25 25 / 10%);
+}
+.navbar-brand {
+  color: #fff !important;
+  font-size: 3rem !important;
+  font-weight: 600;
+}
+.wrapper {
+  margin-top: 98px;
+}
+dropdowm items a#basic-nav-dropdown {
+  padding: 10px 28px;
+}
+.text-light.nav-item.dropdown {
+  background: #fff;
+  border-radius: 6px;
+  svg {
+    margin-right: 0.5rem;
+  }
+}
+.dropdown-item {
+  margin: 8px 0 !important;
+}
+.dropdown-menu.show {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 16px;
+}
+
+// search controler
+input.ms-4.me-4.py-2.form-control {
+  padding: 12px 12px !important;
+}
+svg.angled {
+  transform: rotate(180deg);
+}
+span.show {
+  visibility: visible;
+  transition: 0.15s;
+}
+
+form {
+  width: 100%;
+  input {
+    width: 100%;
+  }
+}
+// desktop menu
+
+.menu {
+  ul {
+    padding: 0;
+    margin-bottom: 0;
+    li {
+      padding: 0 16px;
+      a {
+        line-height: 4rem;
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+.bottomSticky {
+  display: none !important;
+}
+@media (max-width: 1024px) {
+  #basic-navbar-nav {
+    display: none !important;
+  }
+
+  a.navbar-brand {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem !important;
+    color: #fff !important;
+    font-weight: 800;
+    span {
+      color: #103178;
+    }
+  }
+  .addtoUtems {
+    display: none;
+  }
+  .bottomSticky {
+    display: block !important;
+    background: #fff;
+  }
+  .wrapper {
+    margin-top: 70px;
+  }
+  nav.bg_color.navbar.navbar-expand {
+    background: #fff;
+  }
+  .carousel-control-next span::before {
+    right: 10px !important;
+  }
+  .carousel-control-next span::after {
+    width: 35px !important;
+    height: 35px !important;
+    left: -35px !important;
+  }
+  .carousel-control-prev span::after {
+    content: "";
+    width: 35px !important;
+    height: 35px !important;
+    left: 28px;
+  }
+  .bottomSticky {
+    .navbar-nav {
+      width: 100%;
+    }
+  }
+  .addtoUtems {
+    display: none;
+  }
+  span.navbar-brand {
+    width: 100% !important;
+    text-align: center;
+  }
+  .desktopMenu {
+    display: none !important;
+  }
+  .fixed-bottom {
+    top: 90% !important;
+  }
+  .navbar-brand {
+    font-size: 1.8rem !important;
+  }
+  .fixed-top {
+    padding: 0;
+  }
+  nav.bottomMenu.navbar.navbar-light.bg-light.fixed-bottom {
+    display: block !important;
+  }
+  .mb_100 {
+    margin-bottom: 100px !important;
+  }
+}
+
+nav.bottomMenu.navbar.navbar-light.bg-light.fixed-bottom {
+  display: none;
+}
+span.itemCount {
+  position: absolute;
+  right: -5px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 50px;
+  height: 1.5rem;
+  width: 1.5rem;
+  line-height: 26px;
+}
+
+@media (max-width: 444px) {
+  .addToCartItems {
+    width: 240px !important;
+  }
+  .carousel-control-next {
+    right: 4px !important;
+  }
+  .carousel-control-next {
+    right: 10px !important;
+  }
+}
+
+.navbar-toggler {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px !important;
+}
+.me-auto.navbar-nav {
+  display: flex;
+  justify-content: space-between !important;
+}
+.account {
+  line-height: 4rem;
+  margin-left: 4px;
+  svg {
+    color: #fff;
+    font-size: 2rem;
+  }
+}
+
+.carousel-control-prev {
+  left: 22px !important;
+}
+span.carousel-control-next-icon {
+  right: -26px;
+}

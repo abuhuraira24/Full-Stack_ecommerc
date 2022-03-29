@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+body {
+  background: #fff;
+}
+.w-100 {
+  max-width: 100%;
+}
+.bordered {
+  border-radius: 10px;
+}
+input:focus {
+  outline: none;
+  border: 1px solid #ddd !important;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.p-header {
+  padding: 1.5rem 1rem 0rem 0rem;
+}
+.theme_btn {
+  border: none;
+  color: #fff;
+}
+
+a {
+  opacity: 1 !important;
+}
+
+img {
+  max-width: 100%;
+}
+.modal-content {
+  border: 0;
+}
+
+/* Add New Product */
+.fileUploadSite {
+  width: 20%;
+  margin-right: 2%;
+}
+.dataform {
+  width: 80%;
+}
+.addNewtitle {
+  border-bottom: 1px solid #ddd;
+
+  h3 {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+}
+.addNewForm {
+  margin-top: 1.8rem;
+}
+
+.imgUpload {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 8px dashed #ddd;
+  height: 218px;
+  position: relative;
+  img {
+    max-width: 50%;
+  }
+  input {
+    opacity: 0;
+    height: 5px;
+    position: absolute;
+    bottom: 30px;
+    height: 129px;
+    left: 11%;
+    width: 80%;
+  }
+  span {
+    font-weight: 700;
+    color: #8f8f8f;
+    background: #f0f0f0;
+    border-radius: 8px;
+  }
+}
+.prices {
+  display: flex;
+  div {
+    display: flex;
+    width: 100%;
+    span {
+      padding: 15px;
+      background: #ddd;
+    }
+  }
+}
+.price {
+  width: 48% !important;
+  margin-right: 2%;
+  div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    span {
+      padding: 15px;
+      background: #ddd;
+    }
+  }
+}
+.discount {
+  width: 48% !important;
+  div {
+    flex-direction: column;
+  }
+}
+
+.sortDesc {
+  textarea {
+    min-height: 200px;
+  }
+}
+.productdescription {
+  textarea {
+    min-height: 300px;
+  }
+}
+textarea:focus {
+  box-shadow: none !important;
+}
+select:focus {
+  box-shadow: none !important;
+}
+
+.selectOption {
+  select {
+    option {
+      border: none !important;
+      margin: 1rem 0 !important;
+    }
+    option:hover {
+      background: red !important;
+    }
+  }
+}
+
+.formButton {
+  text-align: right;
+  button {
+    background: #ddd;
+    padding: 1rem;
+    font-size: 19px;
+    font-weight: 600;
+    transition: 0.5s;
+  }
+  button:hover {
+    background: #103178;
+    color: #fff;
+    transition: 0.5s;
+  }
+}
+div#loadedImg {
+  border: 1px solid #ddd;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+  }
+}
