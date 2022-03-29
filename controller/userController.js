@@ -129,6 +129,7 @@ module.exports = {
                 processing: user.processing,
                 refounded: user.refounded,
                 pageview: user.pageview,
+                transactions: user.transactions,
               },
               "SECRET",
               { expiresIn: "72h" }

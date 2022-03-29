@@ -2,6 +2,10 @@ const express = require("express");
 
 const app = express();
 
+const addNewProduct = require("./router/product/addNewProduct");
+
+const getAllProduct = require("./router/product/gettAllProduct");
+
 const passport = require("passport");
 
 const router = require("./router/userRouter");
@@ -27,8 +31,8 @@ require("./passport")(passport);
 
 app.use("/user/", require("./router/userRouter"));
 
-app.use("/product", require("./router/product/addNewProduct"));
-app.use("/product", require("./router/product/gettAllProduct"));
+app.use("/product", addNewProduct);
+app.use("/product", getAllProduct);
 const PORT = 4000;
 app.get("/", (req, res) => {
   res.status(200).json({

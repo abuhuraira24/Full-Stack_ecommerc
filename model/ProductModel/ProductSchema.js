@@ -34,6 +34,10 @@ const addNewProductSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 
 const AddNewProductSchema = new mongoose.model("Product", addNewProductSchema);

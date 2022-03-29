@@ -8,6 +8,8 @@ const upload = require("../../fileUpload/uploader");
 
 adminRouter.use(errorMiddleware);
 
+const authenticate = require("../../authenticate");
+
 adminRouter.post("/newproduct", upload.single("avatar"), addNewProduct);
 
 module.exports = adminRouter;

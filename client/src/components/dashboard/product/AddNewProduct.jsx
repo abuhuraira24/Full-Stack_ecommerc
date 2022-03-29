@@ -136,7 +136,7 @@ class AddNewProduct extends React.Component {
                         <p className='error'>{error.price}</p>
                 </Form.Group>
                </div>
-               <div className="discount">
+               <div className="discountProduct">
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                          
                           <Form.Control 

@@ -2,10 +2,13 @@ import Axios from "axios";
 
 import * as Types from "../../types/types";
 
+const token = localStorage.getItem("auth_token");
+
 export const addNewProduct = (product) => (dispatch) => {
   Axios.post("/product/newproduct", product, {
     headers: {
-      "Content-Type": "*",
+      "Content-Types": "application/json",
+      Authorization: `${token.split(" ")[1]}`,
     },
   })
     .then((res) => {})
