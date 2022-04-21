@@ -4,40 +4,51 @@ import "../../assets/scss/Shopping-details.scss"
 import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/action/shoppingAction/shopping-action";
-import Skeleton from "react-loading-skeleton";
+import {useCart } from "react-use-cart";
 import { Toaster } from 'react-hot-toast';
 
-const Product = ({productData,addToCart, cart,showDetails,loading}) => {
-    
-   
-    const iscart = cart.find((item) => productData.id === item.id ? true : false)
+const Product = ({productData}) => {
+
+    const { addItem } = useCart();
+
+    let newData = {}
+    newData.id = productData._id
+    newData.author = productData.author
+    newData.avatar = productData.avatar
+    newData.categorie = productData.categorie
+    newData.desc = productData.desc
+    newData.discount = productData.discount
+    newData.pending = productData.pending
+    newData.pendingReview = productData.pendingReview
+    newData.price = productData.price
+    newData.productName = productData.productName
+    newData.sortDesc = productData.sortDesc
 
 
+  
     return (
         <>
        <CardGroup>
             <Card>
 
-                {loading ? <Skeleton height={200} highlightColor="#fff"/> : <CardImg
+               <CardImg
                 alt="Card image cap"
-                src={productData.img}
+                src={require(`../../../src/assets/images/${productData.avatar}`)}
                 top
                 width="100%"
                 role="button"
-                onClick={() => showDetails(productData.id)}
-                />}
-                <span className="discount"> {productData.discount}% </span>
+               
+                />
+                <span className="discount">{productData.discount}% </span>
                
                 <CardBody>
                 <CardTitle 
                  tag="h6" 
                  className="mt-3"
                  role="button"
-                 onClick={() => showDetails(productData.id)}
-                 
                  >
-                    {/* {productData.title} */}
-                    {loading ? <Skeleton highlightColor="#fff" height={15}/> : <> {productData.title}</>}
+                    {productData.productName}
+                  
                 </CardTitle>
                 <CardSubtitle
                   className="mb-4 text-muted"
@@ -45,16 +56,16 @@ const Product = ({productData,addToCart, cart,showDetails,loading}) => {
 
                 >
                    {/* {productData.pc} pc(s) */}
-                   {loading ? <Skeleton highlightColor="#fff" height={15}/> : <> {productData.pc} pc(s)</>}
+                   <span>0pc</span>
                 </CardSubtitle>
         
                 <div className="action d-flex justify-content-between align-items-center">
                    
-                    {loading ? <Skeleton highlightColor="#fff" width={50} height={20}/> : <> <span className="color_theme">${productData.price}</span></>}
-                    {loading ? <Skeleton highlightColor="#fff" width={50} height={20}/> : (<Button id={iscart ? "bg_color" : null} onClick={() => addToCart(productData.id)} className="btn_theme addToCart color_theme d-flex justify-content-between align-items-center" >
+                    <> <span className="color_theme">${productData.price}</span></>
+                    <Button onClick={() => addItem(newData)} className="btn_theme addToCart color_theme d-flex justify-content-between align-items-center" >
                        <FaShoppingCart className="mr-4"/>
                         Cart
-                    </Button>)}
+                    </Button>
                  <Toaster   
                     position="bottom-left"
                     reverseOrder={true}

@@ -12,24 +12,8 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   register(req, res) {
-    const {
-      email,
-      password,
-      firstName,
-      lastName,
-      shopName,
-      phoneNumber,
-      sales,
-      earning,
-      order,
-      totall,
-      complete,
-      pending,
-      processing,
-      cancelled,
-      refounded,
-      pageview,
-    } = req.body;
+    const { email, password, firstName, lastName, shopName, phoneNumber } =
+      req.body;
 
     const userValidity = userValidator({
       email,
@@ -59,12 +43,12 @@ module.exports = {
               lastName,
               shopName,
               phoneNumber,
-              sales: 0,
+              newUserData: 0,
               earning: 0,
               order: 0,
               totall: 0,
               complete: 0,
-              pending: 0,
+              pendingNumber: 0,
               processing: 0,
               cancelled: 0,
               refounded: 0,
@@ -119,17 +103,6 @@ module.exports = {
                 lastName: user.lastName,
                 shopName: user.shopName,
                 phoneNumber: user.phoneNumber,
-                sales: user.sales,
-                earning: user.earning,
-                totall: user.totall,
-                cancelled: user.cancelled,
-                order: user.order,
-                complete: user.complete,
-                pending: user.pending,
-                processing: user.processing,
-                refounded: user.refounded,
-                pageview: user.pageview,
-                transactions: user.transactions,
               },
               "SECRET",
               { expiresIn: "72h" }
@@ -145,5 +118,31 @@ module.exports = {
           serverError(res, error);
         });
     }
+  },
+  getUserData(req, res) {
+    let { userId } = req.params;
+
+    User.findOne({ _id: userId })
+      .then((data) => {
+        const newUserData = {
+          cancelled: data.cancelled,
+          earning: data.earning,
+          order: data.order,
+          sales: data.sales,
+          totall: data.totall,
+          complete: data.complete,
+          pendingNumber: data.pendingNumber,
+          processing: data.processing,
+          pendingReview: data.pendingReview,
+        };
+        res.status(200).json({
+          userData: newUserData,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          message: "There was an server Error!",
+        });
+      });
   },
 };

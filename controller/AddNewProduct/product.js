@@ -6,8 +6,6 @@ const productValidator = require("../../validations/ProductValidator/productVali
 
 const path = require("path");
 
-const decode = require("jwt-decode");
-
 const User = require("../../model/userSchema");
 
 module.exports = {
@@ -15,10 +13,7 @@ module.exports = {
     const { productName, price, discount, sortDesc, categorie, desc } =
       req.body;
 
-    // const token = req.headers.authorization;
-
-    const decoded = decode(req.headers.authorization);
-
+    const userId = req.user._id;
     const validator = productValidator({
       productName,
       price,
@@ -32,11 +27,17 @@ module.exports = {
 
     if (!validator.isValid) {
       if (filename) {
-        unlink(path.join(__dirname, `../../upload/${filename}`), (error) => {
-          if (error) {
-            return console.log(error);
+        unlink(
+          path.join(
+            __dirname +
+              `../../../../foodex/client/src/assets/images/${filename}`
+          ),
+          (error) => {
+            if (error) {
+              return console.log(error.message);
+            }
           }
-        });
+        );
       }
       return res.status(400).json(validator.error);
     }
@@ -55,29 +56,47 @@ module.exports = {
       live: 0,
       offline: 0,
       pendingReview: 0,
-      author: decoded._id,
+      pending: true,
+      pendingReview: 0,
+      author: userId,
     });
 
     newData
       .save()
       .then((product) => {
-        decoded.transactions.push(product._id);
+        const updatedUser = { ...req.user._doc };
 
-        User.findByIdAndUpdate(decoded._id, { $set: decoded }, { new: true })
-          .then((result) => {
-            console.log(result);
-          })
+        updatedUser.pendingNumber = updatedUser.pendingNumber + 1;
+        updatedUser.transactions.unshift(product._id);
+
+        User.findByIdAndUpdate(userId, { $set: updatedUser }, { new: true })
+          .then((result) => {})
           .catch((error) => {
             console.log(error);
           });
 
         res.status(200).json({
           message: "Successfully Added Your New Product",
-          decoded,
         });
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error);
+        res.status(500).json({
+          message: "Server error occured to save data",
+        });
+      });
+  },
+  updateProduct(req, res) {
+    console.log(`body ${req.body}`);
+    const productId = req.params.productId;
+    AddNewProductSchema.find({ _id: productId })
+      .then((result) => {
+        res.status(200).json({
+          message: result,
+          body: req.body,
+        });
+      })
+      .catch((error) => {
         res.status(500).json({
           message: "Server error occured to save data",
         });

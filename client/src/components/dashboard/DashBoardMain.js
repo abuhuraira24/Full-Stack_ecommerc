@@ -9,6 +9,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { BsBagPlus } from "react-icons/bs";
 
 import { FaShoppingBasket } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 class DashBoardMain extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class DashBoardMain extends React.Component {
 
   render() {
     const {
+      cancelled,
       earning,
       order,
       sales,
@@ -24,32 +26,12 @@ class DashBoardMain extends React.Component {
       complete,
       pending,
       processing,
-      cancelled,
-    } = this.props.login;
-    console.log(this.props.login);
+      pendingNumber,
+    } = this.props.getUserData;
+
     return (
       <div className="dashboardMain">
         <div className="mainside">
-          <div className="earningsite">
-            <ul>
-              <li>
-                Earning
-                <span>{earning === 0 ? "$0.00" : `${earning}`}</span>
-              </li>
-              <li>
-                Sales
-                <span>{sales === 0 ? "$0.00" : `${sales}`}</span>
-              </li>
-              {/* <li>
-                Pageview
-                <span>0</span>
-              </li> */}
-              <li>
-                Order
-                <span>{order}</span>
-              </li>
-            </ul>
-          </div>
           <div className="order">
             <div className="orderTitle">
               <div className="left">
@@ -84,7 +66,7 @@ class DashBoardMain extends React.Component {
                     >
                       Pending
                     </td>
-                    <td>{pending}</td>
+                    <td>0</td>
                   </tr>
 
                   <tr>
@@ -119,7 +101,10 @@ class DashBoardMain extends React.Component {
               </div>
               <div className="right">
                 <BsBagPlus />
-                <h5> Add New Product</h5>
+
+                <Link to="dashboard/addnewproduct">
+                  <h5> Add New Product</h5>
+                </Link>
               </div>
             </div>
             <div className="orderLisst">
@@ -141,8 +126,15 @@ class DashBoardMain extends React.Component {
                   </tr>
 
                   <tr>
-                    <td>Pending Review</td>
-                    <td>{processing}</td>
+                    <td>
+                      <Link to="dashboard/product" style={{ color: "#363434" }}>
+                        Pending Review
+                      </Link>
+                    </td>
+
+                    <td>
+                      <Link to="dashboard/product">{pendingNumber}</Link>
+                    </td>
                   </tr>
                 </tbody>
               </Table>
@@ -157,6 +149,7 @@ class DashBoardMain extends React.Component {
 const mapStateToProps = (state) => {
   return {
     login: state.login.user,
+    getUserData: state.getUserData.userData,
   };
 };
 

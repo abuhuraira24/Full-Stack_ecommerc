@@ -20,7 +20,6 @@ class Layout extends React.Component {
     return (
       <>
        {/* <DesktopMenu /> */}
-        {this.destTopMenu()}
           <Container fluid className="p-0">
             <Header />
           </Container>

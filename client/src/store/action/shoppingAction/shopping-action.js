@@ -1,5 +1,9 @@
 import * as actionTypes from "../../types/shoppingTypes/shoppingType";
+import * as Types from "../../types/types";
+import Axios from "axios";
+
 import toast from "react-hot-toast";
+
 //====== Product request ========//
 export const product_request = () => {
   return {
@@ -102,4 +106,51 @@ export const tableItems = (value) => {
     type: actionTypes.TABLE_ITEMS,
     payload: value,
   };
+};
+
+export const publishedProducts = () => (dispatch) => {
+  Axios.get("/product/getpublished")
+    .then((prduct) => {
+      dispatch({
+        type: actionTypes.PUBLISHED_PRODUCT,
+        payload: {
+          products: prduct.data.data,
+        },
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const totalPrices = (price) => {
+  return {
+    type: actionTypes.TOTAL_PRICE,
+    payload: price,
+  };
+};
+
+export const updateReducer = (id) => (dispatch) => {
+  Axios.get(`/product/editproduct/${id}`)
+    .then((product) => {
+      dispatch({
+        type: Types.GET_UPDATED_PRODUCT,
+        payload: {
+          udatedProduct: product.data.product,
+        },
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const updatedProdcutAction = (data, id) => {
+  Axios.put(`/product/editproduct/${id}`)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

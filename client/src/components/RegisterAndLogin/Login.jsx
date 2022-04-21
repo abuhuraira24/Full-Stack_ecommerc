@@ -39,7 +39,7 @@ class Login extends React.Component {
 
     render() {
         const {email, password, error} = this.state
-
+         
         return (
             <>
              <div className="register">
@@ -98,7 +98,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-
+console.log(state)
     return {
         authLogin : state.login    }
 }

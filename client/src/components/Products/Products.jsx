@@ -1,63 +1,28 @@
 import Product from "./Product";
-import axios from "axios";
-import { useEffect } from "react";
 
 import {Modal, ModalHeader, ModalBody, Container,Button, Row,Col} from "reactstrap"
 import "../../assets/scss/addtocart.scss"
 import "../../assets/scss/modal.scss"
 import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addToCart, product_request,product_data_success,increment, decrement } from "../../store/action/shoppingAction/shopping-action";
 
 
-const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,loading,reletedShop,filter}) => {
-  
-  const dispatch = useDispatch()
-  const fetch_product = async () => {
-      
-      dispatch(product_request())
-   
-    axios
-    .get(
-      "https://mocki.io/v1/308c57af-6653-48ef-99b0-30b4ebdb1923"
-    )
-    .then((res) => {
-    
-      dispatch(product_data_success(res.data))
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-   
-  };
-  
+
+const ProductsItems = ({isFalse,showDetails,shopDetails,publishedProducta}) => {
   
 
-  useEffect(() => {
-    fetch_product()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
 
   
-
-  const filterItems = () => {
-    if(filter === "all"){
-      return data
-   }else{
-    const filtered = data.filter((item) => item.category === filter )
-    return filtered
-   }
-  }
-
     return (
         <>
-         {filterItems().map((item, index) => {
-           return (
-            <Col  key={index} className="col-xl-3 col-md-4 col-lg-3 col-sm-6 col-12">
-               <Product  productData={item} />
-            </Col>
-           )
-         })}
+        
+            {publishedProducta.length > 0 && publishedProducta?.map((itm, index) => {
+              return (
+                <Col className="col-xl-3 col-md-4 col-lg-3 col-sm-6 col-12">
+                  <Product productData={itm} />
+                </Col>
+              )
+            })}
+          
       <Modal 
           isOpen={isFalse}
           toggle={showDetails}
@@ -84,7 +49,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
                               <div className="incrementValue">
      
                               </div>
-                              <Button onClick={() => addToCart(item.id)} className="bg_color my-5" size="lg">Add To Cart</Button>
+                              <Button className="bg_color my-5" size="lg">Add To Cart</Button>
 
                               <br />
                               <span className="categories">
@@ -113,6 +78,7 @@ const ProductsItems = ({cart,isFalse,showDetails,shopDetails,addToCart,data,load
 
 const mapStateToProps = (state) => {
   const {shopDetails,isFalse} = state.shop
+
   return {
     isFalse : isFalse,
     shopDetails : shopDetails,
@@ -120,30 +86,13 @@ const mapStateToProps = (state) => {
     cart : state.shop.cart,
     loading : state.shop.loading,
     reletedShop : state.shop.reletedShop,
-    filter : state.shop.filter
-
+    filter : state.shop.filter,
+    publishedProducta : state.shop.publishedProducta
   }
 }
 
 
-const showDetails = (id) => ({
-  type : "SHOW_SHOP",
-  payload : {
-      id : id
-  }
-})
 
-// dispatch
-const mapDispatchToProps = dispatch => {
-return {
-    showDetails : (id) => dispatch(showDetails(id)),
-    addToCart : (id) => dispatch(addToCart(id)),
-    increment : (id) => dispatch(increment(id)),
-    decrement : (id) => decrement(decrement(id))
-}
-}
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(ProductsItems);
+export default connect(mapStateToProps)(ProductsItems);
 
 

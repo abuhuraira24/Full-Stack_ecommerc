@@ -13,3 +13,5 @@ export const WOOD_ITEMS = "WOOD_ITEMS";
 export const PHONE_ITEMS = "PHONE_ITEMS";
 export const TABLE_ITEMS = "TABLE_ITEMS";
 export const SHOW_DETAILS = "SHOW_DETAILS";
+export const PUBLISHED_PRODUCT = "PUBLISHED_PRODUCT"
+export const TOTAL_PRICE = "TOTAL_PRICE"    

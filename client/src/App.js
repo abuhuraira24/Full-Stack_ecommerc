@@ -29,12 +29,16 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={Home} />
 
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/register">
+              {isAuthenticated ? <Dashboard /> : <Register />}
+            </Route>
 
             <Route exact path="/login">
               {isAuthenticated ? <Redirect to="/dashboard" /> : <Login />}
             </Route>
-
+            {/* <Route exact path="/editproduct">
+              {isAuthenticated ? <Redirect to="/dashboard/edit" /> : <Login />}
+            </Route> */}
             <Route exact path="/dashboard">
               {isAuthenticated ? <Dashboard /> : <Login />}
             </Route>

@@ -10,7 +10,7 @@ import jwt_decode from "jwt-decode";
 import * as Types from "../src/store/types/authActions/types";
 import { Provider } from "react-redux";
 import store from "./store/";
-
+import { CartProvider, useCart } from "react-use-cart";
 const token = localStorage.getItem("auth_token");
 
 if (token) {
@@ -24,9 +24,12 @@ if (token) {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <CartProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+    ,
+  </CartProvider>,
 
   document.getElementById("root")
 );

@@ -1,6 +1,7 @@
 import {Button} from "reactstrap"
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
+import {useCart} from "react-use-cart"
 const AddToCartButton = ({cart}) => {
 
    const [totalPrice, setTotalPrice] = useState("0.00")
@@ -14,13 +15,14 @@ const AddToCartButton = ({cart}) => {
    }, [cart,totalPrice,setTotalPrice])
 
 
+
     return (
      
           <div className="itemBottom px-4">
             <div className="d-grid gap-2">
                  <Button className="bg_color d-flex align-items-center justify-content-between pill" size="lg">
                     <span>Checkout</span>
-                    <span className="bg-light text-dark px-3 rounded-pill">${totalPrice}</span>
+                   
                  </Button>
             </div>
          </div>

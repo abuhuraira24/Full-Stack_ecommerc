@@ -13,6 +13,7 @@ opts.secretOrKey = "SECRET";
 module.exports = (passport) => {
   passport.use(
     new JwtStrategy(opts, (payload, done) => {
+      console.log(`paylodd ${payload}`);
       User.findOne({ _id: payload._id })
         .then((user) => {
           console.log(user);

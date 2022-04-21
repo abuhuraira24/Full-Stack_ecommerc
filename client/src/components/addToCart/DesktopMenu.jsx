@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { connect } from "react-redux";
 import { Navbar, Container } from "react-bootstrap";
 import ToggleMenu from "../ToggleMenu";
-
+import {useCart } from "react-use-cart";
 
 const DesktopMenu = ({ cart }) => {
 
@@ -21,19 +21,22 @@ const DesktopMenu = ({ cart }) => {
     setTotalPrice(totalPrice)
   }, [cart, cartCount]);
   
-
-
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    updateItemQuantity,
+    removeItem,
+  } = useCart();
   return (
     <>
       <Navbar bg="light" className="bg_color rounded desktopMenu" expand={false}>
         <Container fluid>
           <Navbar.Toggle aria-controls="offcanvasNavbar">
               <span className="text-light mb-2">
-              <FaShoppingCart /> {cartCount} items
+              <FaShoppingCart /> {totalUniqueItems} items
               </span>
-              <span className="totallPrices rounded">
-                ${totalPrice}
-              </span>
+              
           </Navbar.Toggle>
 
           <ToggleMenu />

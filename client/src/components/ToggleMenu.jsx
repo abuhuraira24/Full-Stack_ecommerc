@@ -5,25 +5,23 @@ import { connect } from "react-redux";
 import AddToCartButton from "./addToCart/AddToCartButton";
 import AddToCartBody from "./addToCart/AddToCartBody";
 import SingleItem from "./addToCart/SingleItem";
-
+import {useCart } from "react-use-cart";
 
 const ToggleMenu = ({cart}) => {
 
-    const [cartCount, setCartCount] = useState(0);
+    let [cartCount, setCartCount] = useState(0);
    
-    useEffect(() => {
-      let count = 0;
-     
-  
-      cart.forEach((item) => {
-        count += item.qty;
+
+    const {
+      isEmpty,
+      totalUniqueItems,
+      items,
+      updateItemQuantity,
+      removeItem,
+    } = useCart();
     
-      });
-      setCartCount(count);
-      
-    }, [cart, cartCount]);
-  
-    const iscarted = cart.length > 0;
+    const iscarted = items.length > 0;
+
     return (
         <>
         <Navbar.Offcanvas
@@ -36,7 +34,7 @@ const ToggleMenu = ({cart}) => {
               <span className="my-3 ">
                 <FaShoppingCart className="color_theme" />
                 <span className="color_theme ms-3 fs-5 text">
-                  {cartCount} items
+                  {totalUniqueItems} items
                 </span>
               </span>
               </Offcanvas.Title>
@@ -44,9 +42,15 @@ const ToggleMenu = ({cart}) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
             {iscarted ? <AddToCartBody>
-                      {cart.map((item, index) => {
+                      {items.map((item, index) => {
+
                           return (
-                          <SingleItem key={index} cartData={item} />
+                          <SingleItem 
+                          key={index} 
+                          cartData={item}
+                          removeItem={removeItem} 
+                          updateItemQuantity={updateItemQuantity}
+                          />
                           )
                       })}
                  </AddToCartBody> : <AddToCartBody className={iscarted ? "" : "emptyCart"}>

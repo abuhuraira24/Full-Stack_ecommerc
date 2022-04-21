@@ -34,9 +34,15 @@ const addNewProductSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  pending: Boolean,
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
+  },
+  pendingReview: {
+    type: Number,
+    required: true,
+    trim: true,
   },
 });
 

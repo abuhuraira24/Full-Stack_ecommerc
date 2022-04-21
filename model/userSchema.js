@@ -36,7 +36,7 @@ const registerShema = new Schema({
   order: Number,
   totall: Number,
   complete: Number,
-  pending: Number,
+  pendingNumber: Number,
   processing: Number,
   cancelled: Number,
   Refounded: Number,

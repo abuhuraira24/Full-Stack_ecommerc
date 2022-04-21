@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+
 import "../assets/scss/side_bar.scss"
 import SideBar from "../components/SideBar";
 import Main from "../components/Main";

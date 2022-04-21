@@ -1,5 +1,6 @@
 import * as actionTypes from "../../types/shoppingTypes/shoppingType";
 
+import * as Types from "../../types/types";
 // product Images vastable
 
 const INITIALSTATE = {
@@ -12,6 +13,8 @@ const INITIALSTATE = {
   isFalse: false,
   shopDetails: [],
   reletedShop: [],
+  publishedProducta: [],
+  totalPrice: [],
 };
 
 const shopReducer = (state = INITIALSTATE, action) => {
@@ -22,12 +25,6 @@ const shopReducer = (state = INITIALSTATE, action) => {
         loading: true,
       };
 
-    case actionTypes.PRODUCT_DATA_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        data: action.payload,
-      };
     case actionTypes.FAILED_TO_FETCH:
       return {
         ...state,
@@ -127,7 +124,6 @@ const shopReducer = (state = INITIALSTATE, action) => {
         ...state,
       };
     case actionTypes.TABLE_ITEMS:
-      console.log(action.payload);
       state.filter = action.payload;
       return {
         ...state,
@@ -148,6 +144,19 @@ const shopReducer = (state = INITIALSTATE, action) => {
         ...state,
         isFalse: isOpen ? false : true,
         shopDetails: filterShopDetails,
+      };
+
+    case actionTypes.PUBLISHED_PRODUCT:
+      return {
+        ...state,
+        publishedProducta: action.payload.products,
+      };
+
+    case actionTypes.TOTAL_PRICE:
+      console.log(state.totalPrice);
+      return {
+        ...state,
+        totalPrice: action.payload,
       };
 
     default:

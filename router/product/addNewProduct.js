@@ -10,6 +10,11 @@ adminRouter.use(errorMiddleware);
 
 const authenticate = require("../../authenticate");
 
-adminRouter.post("/newproduct", upload.single("avatar"), addNewProduct);
+adminRouter.post(
+  "/newproduct",
+  authenticate,
+  upload.single("avatar"),
+  addNewProduct
+);
 
 module.exports = adminRouter;

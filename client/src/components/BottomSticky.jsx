@@ -16,7 +16,7 @@ const BottomSticky = ({cart}) => {
     useEffect(() => {
       let count = 0;
     
-      cart.forEach((item) => {
+      [].forEach((item) => {
         count += item.qty;
       });
       setCartCount(count);

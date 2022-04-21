@@ -24,6 +24,7 @@ class SideBarMenu extends React.Component {
     render() {
        
         const {shopName} = this.props.login
+     
         return <div className="dashboardMenu">
             <Container>
                    <Row>
@@ -41,30 +42,7 @@ class SideBarMenu extends React.Component {
                                   </Link>
                               </div>
                               <div className="headerbody">
-                                  {/* <NavLink
-                                  className="d-block"
-                                  exact
-                                   to="/dashboard/product"
-                                   style={{
-                                    marginBottom : "1rem",
-                                   }}
-                                   activeStyle={{
-                                    fontWeight: "bold",
-                                    color: "#103178",
-                                    display: "block",
-                                    
-                                  }}
-                                   >   
-                                       Product
-                                       </NavLink>
-                                  <NavLink
-                                  activeStyle={{
-                                    fontWeight: "bold",
-                                    color: "#103178",
-                                    display: "block"
-                                  }}
-                                   className="d-block"
-                                  exact to="/dashboard/setting">Setting</NavLink> */}
+                      
                             <Accordion defaultActiveKey={this.props.activeKey}>
                                 <Accordion.Item eventKey="0">
                                 <Accordion.Header>Products</Accordion.Header>
@@ -83,7 +61,7 @@ class SideBarMenu extends React.Component {
                                                     
                                                 }}
                                                 >  
-                                               All Products
+                                               Products
                                             </NavLink>
                                                 <NavLink
                                                 className="d-block"
@@ -120,18 +98,7 @@ class SideBarMenu extends React.Component {
                                    >
                                        Setting
                                    </NavLink>
-                                   <NavLink
-                                  activeStyle={{
-                                    fontWeight: "bold",
-                                    color: "#103178",
-                                    display: "block"
-                                  }}
-                                   className="d-block"
-                                   exact 
-                                   to="/dashboard/accountdetails"
-                                   >
-                                       Account Details
-                                   </NavLink>
+                                   
                                     </Accordion.Body>
                                 </Accordion.Item>
                            </Accordion>

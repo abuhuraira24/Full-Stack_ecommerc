@@ -59,6 +59,7 @@ class AddNewProduct extends React.Component {
       
       const {productName, price,discount, sortDesc, categorie,desc,avatar} = this.state
 
+      console.log(this.state)
       const formData = new FormData();
 
       formData.append("avatar", avatar)
@@ -71,12 +72,23 @@ class AddNewProduct extends React.Component {
       
       this.props.addNewProduct(formData)
       
+      // this.setState({
+      //   productName : "",
+      //         price : 0,
+      //         discount : 0,
+      //         sortDesc : "",
+      //         categorie : "",
+      //         desc : "",
+      //         avatar : "",
+      //         loadFile : ""
+      // })
 
     }
 
   render() {
     const {productName, price,discount, sortDesc, categorie,desc,loadFile} = this.state
   
+
     const {error} = this.props.addNewProductData
     return (
       <div className="dashpage d-flex">
@@ -104,6 +116,7 @@ class AddNewProduct extends React.Component {
               <input 
               type="file" 
               name="avatar"
+              required
               onChange={this.fileHandler}
               />
               <span>Upload Product Image</span>
@@ -170,11 +183,11 @@ class AddNewProduct extends React.Component {
                onChange={this.changeHandler}
                >
                  <option>- Select a Product Categorie -</option>
-                 <option value="bed0">Bed Room</option>
-                 <option value="bed1">Bed Room</option>
-                 <option value="bed2">Bed Room</option>
-                 <option value="bed3">Bed Room</option>
-                 <option value="bed4">Bed Room</option>
+                 <option value="accessories">Accessories</option>
+                 <option value="cooking">Cooking</option>
+                 <option value="wood">Wood</option>
+                 <option value="phone">Phone</option>
+                 <option value="table">Table</option>
                </select>
                <p className='error'>{error.categorie}</p>
              </div>
