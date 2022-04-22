@@ -18,9 +18,10 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "name": "foodex",
   "version": "1.0.0",
@@ -36,5 +37,8 @@
     "url": "https://github.com/abuhuraira24/foodex/issues"
   },
   "homepage": "https://github.com/abuhuraira24/foodex#readme",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.13.1"
+  }
 }

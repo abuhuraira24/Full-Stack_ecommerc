@@ -31,15 +31,23 @@ app.use("/user/", require("./router/userRouter"));
 
 app.use("/product", addNewProduct);
 app.use("/product", require("./router/product/gettAllProduct"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
-const PORT = 4000;
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Welcome",
   });
 });
-
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server is Running On ${PORT}`);
-  mongoose.connect("mongodb://localhost:27017/foodex");
+  // mongoose.connect("mongodb://localhost:27017/foodex");
+  mongoose.connect(
+    `mongodb+srv://${foodex24}:${foodex24}@cluster0.vtaxj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  );
 });
